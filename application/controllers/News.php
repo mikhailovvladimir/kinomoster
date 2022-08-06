@@ -33,6 +33,11 @@ class News extends MY_Controller
     
     public function create()
     {
+        if (!$this->dx_auth->is_admin()) {
+            $this->load->helper('url_helper');
+            redirect('/', 'location');
+        }
+
         $this->data['title'] = 'добавить новость';
 
         // получаем значение из формы
@@ -56,6 +61,11 @@ class News extends MY_Controller
 
     public function edit($slug = null)
     {
+        if (!$this->dx_auth->is_admin()) {
+            $this->load->helper('url_helper');
+            redirect('/', 'location');
+        }
+
         $this->data['title'] = 'редактировать новость';
         $this->data['news_item'] = $this->news_model->getNews($slug);
 
@@ -85,6 +95,11 @@ class News extends MY_Controller
 
     public function delete($slug = null)
     {
+        if (!$this->dx_auth->is_admin()) {
+            $this->load->helper('url_helper');
+            redirect('/', 'location');
+        }
+
         $this->data['news_delete'] = $this->news_model->getNews($slug);
 
         if (empty($this->data['news_delete'])) {
