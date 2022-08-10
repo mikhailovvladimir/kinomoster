@@ -17,6 +17,9 @@ class Movies extends MY_Controller
             show_404();
         }
 
+        $this->load->model('comments_model');
+        $this->data['comments'] = $this->comments_model->getComments($movie_slug['id'], 100);
+
         $this->data['title'] = $movie_slug['name'];
         $this->data['year'] = $movie_slug['year'];
         $this->data['rating'] = $movie_slug['rating'];
