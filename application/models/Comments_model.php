@@ -7,7 +7,8 @@ class Comments_model extends CI_Model
         $this->load->database();
     }
 
-    public function getComments($movie_id, $limit) {
+    public function getComments($movie_id, $limit)
+    {
         $query = $this->db
             ->where('movie_id', $movie_id)
             ->limit($limit)
