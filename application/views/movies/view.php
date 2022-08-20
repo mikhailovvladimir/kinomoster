@@ -1,6 +1,5 @@
 <h1><?php echo $title; ?> </h1>
 <hr>
-
 <div class="embed-responsive embed-responsive-16by9">
     <iframe class="embed-responsive-item" src="<?php echo $player_code ?>" frameborder="0" allowfullscreen></iframe>
 </div>

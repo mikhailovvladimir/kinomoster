@@ -39,14 +39,12 @@ class Movies extends MY_Controller
         $offset = (int) $this->uri->segment(4);
 
         // фильмов на странице отображаться
-        $row_count = 2;
-
+        $row_count = 4;
         if ($slug === "films") {
             // сколько всего фильмов
-            $count = count($this->films_model->getFilms(0, 1));
-
+            $count = $this->films_model->getCountMovies(1);
             // параметр относящийся к библиотеке пагинация
-            $p_config['base_url'] = '/movies/type/filmls';
+            $p_config['base_url'] = '/movies/type/films';
             $this->data['title'] = 'Фильмы';
             $this->data['movie_data'] = $this->films_model->getMoviesOnPage($row_count, $offset, 1);
         }
@@ -54,8 +52,8 @@ class Movies extends MY_Controller
         if ($slug === 'serials') {
             $this->data['title'] = 'Сериалы';
             $p_config['base_url'] = '/movies/type/serials';
-            $count = count($this->films_model->getFilms(0, 1));
-            $this->data['movie_data'] = $this->films_model->getMoviesOnPage($row_count, $offset, 1);
+            $count = $this->films_model->getCountMovies(2);
+            $this->data['movie_data'] = $this->films_model->getMoviesOnPage($row_count, $offset, 2);
         }
 
         if (empty($this->data['movie_data'])) {

@@ -7,8 +7,10 @@
           <?php foreach ($movie as $key => $value): ?>
 
             <div class="films_block col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                <?php if (isSiteAvailible($value['poster'])) : ?>
               <a href="/movies/view/<?php echo $value['slug']; ?>"><img src="<?php echo $value['poster']; ?>" alt="<?php echo $value['name']; ?>"></a> 
               <div class="film_label"><a href="/movies/view/<?php echo $value['slug']; ?>"><?php echo $value['name']; ?></a></div>
+                <?php endif; ?>
             </div>
           <?php endforeach; ?>
 
