@@ -17,8 +17,14 @@ class Comments_model extends CI_Model
         return $query->result_array();
     }
 
-    public function addComment()
+    public function addComment($movieId)
     {
+        $commentColumns = [
+            'user_id' => $this->dx_auth->get_user_id(),
+            'movie_id' => $movieId,
+            'comment_text' => $this->input->post('comment-text')
+        ];
 
+        return $this->db->insert('comments', $commentColumns);
     }
 }

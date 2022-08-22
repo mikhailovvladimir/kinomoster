@@ -32,12 +32,16 @@
 </div>
 <?php endforeach; ?>
 
-<form>
-    <div class="form-group">
-        <input type="text" placeholder="ваше имя" class="form-control input-lg">
-    </div>
-    <div class="form-group">
-        <textarea class="form-control"></textarea>
-    </div>
-    <button class="btn btn-lg btn-warning pull-right">отправить</button>
-</form>
+<div style="color: red;"><?php echo validation_errors(); ?></div>
+
+<?php if (!empty($user_id)) : ?>
+    <?php echo form_open(); ?>
+        <div class="form-group">
+            <input type="text" name="comment-name" placeholder="ваше имя" class="form-control input-lg">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" name="comment-text"></textarea>
+        </div>
+        <input type="submit" class="btn btn-lg btn-warning pull-right">
+    </form>
+<?php endif; ?>
