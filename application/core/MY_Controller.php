@@ -13,5 +13,7 @@ class MY_Controller extends CI_Controller
 
         $this->load->model('films_model');
         $this->data['films'] = $this->films_model->getFilmsByRating(10);
+
+        $this->load->helper('form');
     }
 }

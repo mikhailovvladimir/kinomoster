@@ -1,4 +1,34 @@
-        <!-- MENU start -->
+<?php
+
+$username = array(
+	'name'	=> 'username',
+	'id'	=> 'username',
+	'size'	=> 30,
+	'value' => set_value('username')
+);
+
+$password = array(
+	'name'	=> 'password',
+	'id'	=> 'password',
+	'size'	=> 30
+);
+
+$remember = array(
+	'name'	=> 'remember',
+	'id'	=> 'remember',
+	'value'	=> 1,
+	'checked'	=> set_value('remember'),
+	'style' => 'margin:0;padding:0'
+);
+
+$confirmation_code = array(
+	'name'	=> 'captcha',
+	'id'	=> 'captcha',
+	'maxlength'	=> 8
+);
+
+?>
+<!-- MENU start -->
         <div class="col-lg-3 col-lg-pull-9"> <!-- Меняем блоки местами col-lg-pull-9 -->
           
           <div class="panel panel-info hidden-xs">
@@ -22,17 +52,20 @@
             <div class="panel-body">
 
                 <?php if (!$this->dx_auth->is_logged_in()): ?>
-              <form role="form" action="/auth/login" method="post">
-                <div class="form-group">
-                  <input type="text"  class="form-control input-lg" placeholder="Логин" name="username">
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control input-lg" placeholder="Пароль" name="password">
-                </div>
 
-                <button type="submit" class="btn btn-warning pull-right">вход</button>
+                    <?php echo $this->dx_auth->get_auth_error(); ?>
 
-              </form>
+                    <?php echo form_open('auth/login'); ?>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" placeholder="Логин" name="username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-lg" placeholder="Пароль" name="password">
+                    </div>
+
+                    <button type="submit" class="btn btn-warning pull-right">вход</button>
+                    <?php echo form_close(); ?>
+
                 <?php else: ?>
                     Здравствуйте, <?php echo $this->dx_auth->get_username() ?>
                     <a href="/auth/logout" class="btn btn-warning pull-right">Выход</a>

@@ -54,6 +54,8 @@ $route['default_controller'] = 'main';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['auth/login'] = 'auth/login';
+
 $route['movies/(:any)'] = 'movies/view/$1';
 $route['movies/type/films'] = 'movies/type/films/$1';
 $route['movies/type/serials'] = 'movies/type/serials/$1';
