@@ -32,29 +32,29 @@ $email = array(
 <html>
 <body>
 
-<fieldset><legend>Register</legend>
+<fieldset><legend><h1 style="font-size: 3.5rem; text-align: center">Регистрация</h1></legend>
 <?php echo form_open($this->uri->uri_string())?>
 
 <dl>
-	<dt><?php echo form_label('Username', $username['id']);?></dt>
+	<dt><?php echo form_label('Ваше имя', $username['id']);?></dt>
 	<dd>
 		<?php echo form_input($username)?>
     <?php echo form_error($username['name']); ?>
 	</dd>
 
-	<dt><?php echo form_label('Password', $password['id']);?></dt>
+	<dt><?php echo form_label('Пароль', $password['id']);?></dt>
 	<dd>
 		<?php echo form_password($password)?>
     <?php echo form_error($password['name']); ?>
 	</dd>
 
-	<dt><?php echo form_label('Confirm Password', $confirm_password['id']);?></dt>
+	<dt><?php echo form_label('Повторите пароль', $confirm_password['id']);?></dt>
 	<dd>
 		<?php echo form_password($confirm_password);?>
 		<?php echo form_error($confirm_password['name']); ?>
 	</dd>
 
-	<dt><?php echo form_label('Email Address', $email['id']);?></dt>
+	<dt><?php echo form_label('Ваш email', $email['id']);?></dt>
 	<dd>
 		<?php echo form_input($email);?>
 		<?php echo form_error($email['name']); ?>
@@ -87,7 +87,7 @@ $email = array(
 <?php endif; ?>
 
 	<dt></dt>
-	<dd><?php echo form_submit('register','Register');?></dd>
+	<dd><?php echo form_submit('register','Зарегистрироваться');?></dd>
 </dl>
 
 <?php echo form_close()?>

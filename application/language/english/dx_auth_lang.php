@@ -5,11 +5,11 @@
 	For example: Username and password do not match.
 */
 
-$lang['auth_login_incorrect_password'] = "Your password was incorrect.";
-$lang['auth_login_username_not_exist'] = "Username not exist.";
+$lang['auth_login_incorrect_password'] = "Некорректный логин или пароль";
+$lang['auth_login_username_not_exist'] = "Некорректный логин или пароль";
 
 $lang['auth_username_or_email_not_exist'] = "Username or email address not exist.";
-$lang['auth_not_activated'] = "Your account hasn't been activated yet. Please check your email.";
+$lang['auth_not_activated'] = "Ваш аккаунт не активирован. Пожалуйста проверьте свой email";
 $lang['auth_request_sent'] = "Your request to change password is already sent. Please check your email.";
 $lang['auth_incorrect_old_password'] = "Your old password is incorrect.";
 $lang['auth_incorrect_password'] = "Your password is incorrect.";

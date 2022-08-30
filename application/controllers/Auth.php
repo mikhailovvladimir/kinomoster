@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Auth extends CI_Controller
+class Auth extends MY_Controller
 {
     // Used for registering and changing password form validation
     var $min_username = 4;
@@ -67,9 +67,15 @@ class Auth extends CI_Controller
             $val = $this->form_validation;
 
             // Set form validation rules
-            $val->set_rules('username', 'Username', 'trim|required');
-            $val->set_rules('password', 'Password', 'trim|required');
-            $val->set_rules('remember', 'Remember me', 'integer');
+            $val->set_rules('username', 'Ваше имя', 'trim|required', array(
+                'required' => 'Заполните поле %s'
+                )
+            );
+            $val->set_rules('password', 'Пароль', 'trim|required', array(
+                'required' => 'Заполните поле %s'
+                )
+            );
+            $val->set_rules('remember', 'Запомнить меня', 'integer', array('integer' => 'Поле %s не число'));
 
 
             if ($val->run() and $this->dx_auth->login($val->set_value('username'), $val->set_value('password'), $val->set_value('remember'))) {
@@ -82,15 +88,19 @@ class Auth extends CI_Controller
                     $this->dx_auth->deny_access('banned');
                 } else {
                     // Default is we don't show captcha until max login attempts eceeded
-                    $data['show_captcha'] = FALSE;
+                    $this->data['show_captcha'] = FALSE;
 
                     // Load login page view
-                    $this->load->view($this->dx_auth->login_view, $data);
+                    $this->load->view('templates/header', $this->data);
+                    $this->load->view($this->dx_auth->login_view, $this->data);
+                    $this->load->view('templates/footer', $this->data);
                 }
             }
         } else {
-            $data['auth_message'] = 'You are already logged in.';
-            $this->load->view($this->dx_auth->logged_in_view, $data);
+            $this->data['auth_message'] = 'Вы уже вошли в свой аккаунт';
+            $this->load->view('templates/header', $this->data);
+            $this->load->view($this->dx_auth->logged_in_view, $this->data);
+            $this->load->view('templates/footer', $this->data);
         }
     }
 
@@ -130,17 +140,25 @@ class Auth extends CI_Controller
                 }
 
                 // Load registration success page
+                $this->load->view('templates/header', $this->data);
                 $this->load->view($this->dx_auth->register_success_view, $data);
+                $this->load->view('templates/footer', $this->data);
             } else {
                 // Load registration page
+                $this->load->view('templates/header', $this->data);
                 $this->load->view('Auth/register_form');
+                $this->load->view('templates/footer', $this->data);
             }
         } elseif (!$this->dx_auth->allow_registration) {
             $data['auth_message'] = 'Registration has been disabled.';
+            $this->load->view('templates/header', $this->data);
             $this->load->view($this->dx_auth->register_disabled_view, $data);
+            $this->load->view('templates/footer', $this->data);
         } else {
             $data['auth_message'] = 'You have to logout first, before registering.';
+            $this->load->view('templates/header', $this->data);
             $this->load->view($this->dx_auth->logged_in_view, $data);
+            $this->load->view('templates/footer', $this->data);
         }
     }
 

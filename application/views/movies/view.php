@@ -44,4 +44,6 @@
         </div>
         <input type="submit" class="btn btn-lg btn-warning pull-right">
     </form>
-<?php endif; ?>
+<?php else: ?>
+    <div class="alert-danger" style="text-align: center; font-size: 1.4rem;">Комментарии могут отправлять только зарегистрированные пользователи!</div>
+<?php endif;?>
