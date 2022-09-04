@@ -24,21 +24,9 @@ class Movies extends MY_Controller
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules(
-            'comment-name',
-            'Имя',
-            'required',
-            [
-                'required' => 'Поле имя не должно быть пустым'
-            ]
-        );
-
-        $this->form_validation->set_rules(
             'comment-text',
             'Комментарий',
-            'required',
-            [
-                'required' => 'Поле комментарий не должно быть пустым'
-            ]
+            'required'
         );
 
         $this->data['comments'] = $this->comments_model->getComments($movie_slug['id'], 100);

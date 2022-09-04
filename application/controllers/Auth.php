@@ -31,7 +31,7 @@ class Auth extends MY_Controller
     {
         $result = $this->dx_auth->is_username_available($username);
         if (!$result) {
-            $this->form_validation->set_message('username_check', 'Username already exist. Please choose another username.');
+            $this->form_validation->set_message('username_check', 'Имя пользователя уже существует. Выберите другое имя пользователя.');
         }
 
         return $result;
@@ -67,15 +67,9 @@ class Auth extends MY_Controller
             $val = $this->form_validation;
 
             // Set form validation rules
-            $val->set_rules('username', 'Ваше имя', 'trim|required', array(
-                'required' => 'Заполните поле %s'
-                )
-            );
-            $val->set_rules('password', 'Пароль', 'trim|required', array(
-                'required' => 'Заполните поле %s'
-                )
-            );
-            $val->set_rules('remember', 'Запомнить меня', 'integer', array('integer' => 'Поле %s не число'));
+            $val->set_rules('username', 'Логин', 'trim|required');
+            $val->set_rules('password', 'Пароль', 'trim|required');
+            $val->set_rules('remember', 'Запомнить меня', 'integer');
 
 
             if ($val->run() and $this->dx_auth->login($val->set_value('username'), $val->set_value('password'), $val->set_value('remember'))) {
@@ -117,24 +111,24 @@ class Auth extends MY_Controller
             $val = $this->form_validation;
 
             // Set form validation rules
-            $val->set_rules('username', 'Username', 'trim|required|min_length[' . $this->min_username . ']|max_length[' . $this->max_username . ']|callback_username_check|alpha_dash');
-            $val->set_rules('password', 'Password', 'trim|required|min_length[' . $this->min_password . ']|max_length[' . $this->max_password . ']|matches[confirm_password]');
-            $val->set_rules('confirm_password', 'Confirm Password', 'trim|required');
-            $val->set_rules('email', 'Email', 'trim|required|valid_email|callback_email_check');
+            $val->set_rules('username', 'Логин', 'trim|required|min_length[' . $this->min_username . ']|max_length[' . $this->max_username . ']|callback_username_check|alpha_dash');
+            $val->set_rules('password', 'Пароль', 'trim|required|min_length[' . $this->min_password . ']|max_length[' . $this->max_password . ']|matches[confirm_password]');
+            $val->set_rules('confirm_password', 'Повторите пароль', 'trim|required');
+            $val->set_rules('email', 'Ваш Email', 'trim|required|valid_email|callback_email_check');
 
             // Is registration using captcha
             if ($this->dx_auth->captcha_registration) {
                 // Set recaptcha rules.
                 // IMPORTANT: Do not change 'recaptcha_response_field' because it's used by reCAPTCHA API,
                 // This is because the limitation of reCAPTCHA, not DX Auth library
-                $val->set_rules('recaptcha_response_field', 'Confirmation Code', 'trim|required|callback_recaptcha_check');
+                $val->set_rules('recaptcha_response_field', 'Код подтверждения', 'trim|required|callback_recaptcha_check');
             }
 
             // Run form validation and register user if it's pass the validation
             if ($val->run() and $this->dx_auth->register($val->set_value('username'), $val->set_value('password'), $val->set_value('email'))) {
                 // Set success message accordingly
                 if ($this->dx_auth->email_activation) {
-                    $data['auth_message'] = 'You have successfully registered. Check your email address to activate your account.';
+                    $data['auth_message'] = 'Вы успешно зарегистрировались. Проверьте свой адрес электронной почты, чтобы активировать учетную запись.';
                 } else {
                     $data['auth_message'] = 'You have successfully registered. ' . anchor(site_url($this->dx_auth->login_uri), 'Login');
                 }
@@ -150,7 +144,7 @@ class Auth extends MY_Controller
                 $this->load->view('templates/footer', $this->data);
             }
         } elseif (!$this->dx_auth->allow_registration) {
-            $data['auth_message'] = 'Registration has been disabled.';
+            $data['auth_message'] = 'Регистрация отключена.';
             $this->load->view('templates/header', $this->data);
             $this->load->view($this->dx_auth->register_disabled_view, $data);
             $this->load->view('templates/footer', $this->data);
@@ -170,10 +164,10 @@ class Auth extends MY_Controller
 
         // Activate user
         if ($this->dx_auth->activate($username, $key)) {
-            $data['auth_message'] = 'Your account have been successfully activated. ' . anchor(site_url($this->dx_auth->login_uri), 'Login');
+            $data['auth_message'] = 'Ваш аккаунт успешно активирован. ' . anchor(site_url($this->dx_auth->login_uri), 'Авторизоваться');
             $this->load->view($this->dx_auth->activate_success_view, $data);
         } else {
-            $data['auth_message'] = 'The activation code you entered was incorrect. Please check your email again.';
+            $data['auth_message'] = 'Вы ввели неверный код активации. Пожалуйста, проверьте свою электронную почту еще раз.';
             $this->load->view($this->dx_auth->activate_failed_view, $data);
         }
     }

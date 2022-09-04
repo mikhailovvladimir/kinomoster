@@ -36,7 +36,7 @@ $confirmation_code = array(
 <?php echo $this->dx_auth->get_auth_error(); ?>
 
 <dl>
-	<dt><?php echo form_label('Ваше имя', $username['id']);?></dt>
+	<dt><?php echo form_label('Логин', $username['id']);?></dt>
 	<dd>
 		<?php echo form_input($username)?>
     <div class="alert-danger"

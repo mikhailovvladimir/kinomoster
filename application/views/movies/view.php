@@ -37,10 +37,9 @@
 <?php if (!empty($user_id)) : ?>
     <?php echo form_open(); ?>
         <div class="form-group">
-            <input type="text" name="comment-name" placeholder="ваше имя" class="form-control input-lg">
         </div>
         <div class="form-group">
-            <textarea class="form-control" name="comment-text"></textarea>
+            <textarea class="form-control" name="comment-text" placeholder="Ваш комментарий"></textarea>
         </div>
         <input type="submit" class="btn btn-lg btn-warning pull-right">
     </form>
