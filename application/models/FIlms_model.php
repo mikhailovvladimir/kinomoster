@@ -22,6 +22,11 @@ class Films_model extends CI_Model
         return $query->row_array();
     }
 
+    public function get_count_movies()
+    {
+        return $this->db->count_all('movie');
+    }
+
     public function getCountMovies($categoryId)
     {
         if (isset($categoryId)) {
@@ -54,6 +59,14 @@ class Films_model extends CI_Model
         ->where('category_id', $type)
         ->order_by('add_date', 'desc')
         ->get('movie', $row_count, $offset);
+
+        return $query->result_array();
+    }
+
+    public function getMoviesByRatingOnPage($row_count, $offset) {
+        $query = $this->db
+            ->order_by('rating', 'desc')
+            ->get('movie', $row_count, $offset);
 
         return $query->result_array();
     }

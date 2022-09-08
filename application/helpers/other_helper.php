@@ -4,12 +4,12 @@ if (!function_exists('show_active_menu')) {
     function show_active_menu($slug) {
         $ci =& get_instance();
         $result = "";
-        
+
         if ($ci->uri->segment(1, 0) === $slug) {
             $result = 'class="active"';
         }
 
-        if ($ci->uri->segment(3, 0) === $slug) {
+        if ($ci->uri->segment(3, 0) === $slug && $slug !== 0) {
             $result = 'class="active"';
         }
 

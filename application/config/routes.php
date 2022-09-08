@@ -55,6 +55,10 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['auth/login'] = 'auth/login';
+$route['rating'] = 'rating/movies_list';
+$route['rating/(:any)'] = 'rating/movies_list/$1';
+
+$route['contact'] = 'contact';
 
 $route['movies/(:any)'] = 'movies/view/$1';
 $route['movies/type/films'] = 'movies/type/films/$1';
