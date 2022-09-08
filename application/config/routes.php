@@ -58,7 +58,7 @@ $route['auth/login'] = 'auth/login';
 $route['rating'] = 'rating/movies_list';
 $route['rating/(:any)'] = 'rating/movies_list/$1';
 
-$route['contact'] = 'contact';
+$route['feedback'] = 'feedback';
 
 $route['movies/(:any)'] = 'movies/view/$1';
 $route['movies/type/films'] = 'movies/type/films/$1';

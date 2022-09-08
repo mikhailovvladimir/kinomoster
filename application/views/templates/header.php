@@ -65,7 +65,7 @@
                 <li <?php echo show_active_menu('films'); ?>> <a href="/movies/type/films">Фильмы</a></li>
                 <li <?php echo show_active_menu('serials'); ?>> <a href="/movies/type/serials">Сериалы</a> </li>
                 <li <?php echo show_active_menu('rating'); ?>> <a href="/rating">Рейтинг фильмов</a> </li>
-                <li <?php echo show_active_menu('contact'); ?>> <a href="/feedback">Контакты</a> </li>
+                <li <?php echo show_active_menu('feedback'); ?>> <a href="/feedback">Контакты</a> </li>
 
               </ul>
 
