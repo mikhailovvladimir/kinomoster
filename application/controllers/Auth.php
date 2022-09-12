@@ -41,7 +41,7 @@ class Auth extends MY_Controller
     {
         $result = $this->dx_auth->is_email_available($email);
         if (!$result) {
-            $this->form_validation->set_message('email_check', 'Email is already used by another user. Please choose another email address.');
+            $this->form_validation->set_message('email_check', 'Электронная почта уже используется другим пользователем. Выберите другой адрес электронной почты.');
         }
 
         return $result;
