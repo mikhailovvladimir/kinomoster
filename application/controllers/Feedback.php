@@ -14,26 +14,26 @@ class Feedback extends MY_Controller
             [
                 'field' => 'name',
                 'label' => 'Имя',
-                'rules' => 'required|alpha_numeric_spaces|max_length[100]|min_length[5]'
+                'rules' => 'trim|required|htmlspecialchars|is_string|min_length[5]|max_length[100]'
             ],
 
             [
                 'field' => 'email',
                 'label' => 'email',
-                'rules' => 'required|valid_email|max_length[100]|min_length[5]'
+                'rules' => 'trim|required|is_string|valid_email|max_length[100]|min_length[5]'
             ],
 
             [
                 'field' => 'text',
                 'label' => 'Текст',
-                'rules' => 'required|alpha_numeric_spaces|max_length[1000]|min_length[60]'
+                'rules' => 'trim|required|htmlspecialchars|is_string|min_length[60]|max_length[1000]'
             ]
         ];
 
         $this->form_validation->set_rules($config);
 
         if ($this->form_validation->run()) {
-            $this->feedback_model->sendFeedback();
+            $this->feedback_model->send_feedback();
             $this->data['success'] = 'Ваше сообщение успешно доставлено!';
 
             $this->load->view('templates/header', $this->data);

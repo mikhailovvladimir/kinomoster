@@ -869,7 +869,7 @@ class DX_Auth
 
         if ($insert) {
             // Replace password with blank text for email.
-            $new_user['password'] = '**********(you should know it)';
+            $new_user['password'] = '**********(вы должны знать его)';
 
             $result = $new_user;
 

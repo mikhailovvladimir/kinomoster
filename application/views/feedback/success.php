@@ -1,1 +1,1 @@
-<h1 style="color: green; text-align: center;"> <?= $success; ?></h1>
+<div class="alert-success" style="font-size: 1.7rem; padding: 44px; text-align: center;"> <?= $success; ?></div>

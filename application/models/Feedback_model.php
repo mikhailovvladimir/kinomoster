@@ -3,7 +3,7 @@
 
 class Feedback_model extends CI_Model
 {
-    public function sendFeedback()
+    public function send_feedback()
     {
         $feedbackFields = [
             'name' => $this->input->post('name'),

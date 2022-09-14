@@ -7,7 +7,7 @@ class News_model extends CI_Model
         $this->load->database();
     }
 
-    public function getNews($slug = false)
+    public function get_news($slug = false)
     {
         // возвращает все записи из бд
         if ($slug === false) {
@@ -20,7 +20,7 @@ class News_model extends CI_Model
         return $query->row_array();
     }
 
-    public function setNews($slug, $title, $text) 
+    public function set_news($slug, $title, $text)
     {
         $data = array(
             'title' => $title,
@@ -31,7 +31,7 @@ class News_model extends CI_Model
         return $this->db->insert('news', $data);
     }
 
-    public function updateNews($slug, $title, $text)
+    public function update_news($slug, $title, $text)
     {
         $data = array(
             'title' => $title,
@@ -42,7 +42,7 @@ class News_model extends CI_Model
         return $this->db->update('news', $data, array('slug' => $slug));
     }
 
-    public function deleteNews($slug)
+    public function delete_news($slug)
     {
         return $this->db->delete('news', array('slug' => $slug));
     }

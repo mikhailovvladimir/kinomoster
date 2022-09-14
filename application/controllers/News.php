@@ -11,7 +11,7 @@ class News extends MY_Controller
     public function index()
     {
         $this->data['title'] = 'Все новости';
-        $this->data['news'] = $this->news_model->getNews();
+        $this->data['news'] = $this->news_model->get_news();
         $this->load->view('templates/header', $this->data);
         $this->load->view('news/index', $this->data);
         $this->load->view('templates/footer', $this->data);
@@ -19,7 +19,7 @@ class News extends MY_Controller
 
     public function view($slug = null)
     {
-        $this->data['news_item'] = $this->news_model->getNews($slug);
+        $this->data['news_item'] = $this->news_model->get_news($slug);
         if (empty($this->data['news_item'])) {
             show_404();
         }
@@ -47,7 +47,7 @@ class News extends MY_Controller
             $title = $this->input->post('title');
             $text = $this->input->post('text');
 
-            if ($this->news_model->setNews($slug, $title, $text)) {
+            if ($this->news_model->set_news($slug, $title, $text)) {
                 $this->load->view('templates/header', $this->data);
                 $this->load->view('news/success', $this->data);
                 $this->load->view('templates/footer', $this->data);
@@ -67,7 +67,7 @@ class News extends MY_Controller
         }
 
         $this->data['title'] = 'редактировать новость';
-        $this->data['news_item'] = $this->news_model->getNews($slug);
+        $this->data['news_item'] = $this->news_model->get_news($slug);
 
         if (empty($this->data['news_item'])) {
             show_404();
@@ -83,7 +83,7 @@ class News extends MY_Controller
             $title = $this->input->post('title');
             $text = $this->input->post('text');
 
-            if ($this->news_model->updateNews($slug, $title, $text)) {
+            if ($this->news_model->update_news($slug, $title, $text)) {
                 echo 'новость успешно отредактированна';
             }
         }
@@ -100,7 +100,7 @@ class News extends MY_Controller
             redirect('/', 'location');
         }
 
-        $this->data['news_delete'] = $this->news_model->getNews($slug);
+        $this->data['news_delete'] = $this->news_model->get_news($slug);
 
         if (empty($this->data['news_delete'])) {
             show_404();
@@ -109,7 +109,7 @@ class News extends MY_Controller
         $this->data['title'] = 'удалить новость';
         $this->data['result'] = 'Ошибка удаления' . $this->data['news_delete']['title'];
 
-        if ($this->news_model->deleteNews($slug)) {
+        if ($this->news_model->delete_news($slug)) {
             $this->data['result'] = $this->data['news_delete']['title'] . ' успешно удалена';
         }
 

@@ -15,8 +15,8 @@ class Main extends MY_Controller
         $this->data['title'] = "Главная страница";
 
         $this->load->model('films_model');
-        $this->data['movie'] = $this->films_model->getFilms(false, 8, 1);
-        $this->data['serials'] = $this->films_model->getFilms(false, 8, 2);
+        $this->data['movie'] = $this->films_model->get_films(false, 8, 1);
+        $this->data['serials'] = $this->films_model->get_films(false, 8, 2);
 
 
         $this->load->view('templates/header', $this->data);

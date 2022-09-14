@@ -67,8 +67,8 @@ class Auth extends MY_Controller
             $val = $this->form_validation;
 
             // Set form validation rules
-            $val->set_rules('username', 'Логин', 'trim|required');
-            $val->set_rules('password', 'Пароль', 'trim|required');
+            $val->set_rules('username', 'Логин', 'trim|required|htmlspecialchars|is_string|min_length[5]|max_length[100]');
+            $val->set_rules('password', 'Пароль', 'trim|required|htmlspecialchars|is_string|min_length[5]|max_length[100]');
             $val->set_rules('remember', 'Запомнить меня', 'integer');
 
 
@@ -165,10 +165,14 @@ class Auth extends MY_Controller
         // Activate user
         if ($this->dx_auth->activate($username, $key)) {
             $data['auth_message'] = 'Ваш аккаунт успешно активирован. ' . anchor(site_url($this->dx_auth->login_uri), 'Авторизоваться');
+            $this->load->view('templates/header', $this->data);
             $this->load->view($this->dx_auth->activate_success_view, $data);
+            $this->load->view('templates/footer', $this->data);
         } else {
-            $data['auth_message'] = 'Вы ввели неверный код активации. Пожалуйста, проверьте свою электронную почту еще раз.';
-            $this->load->view($this->dx_auth->activate_failed_view, $data);
+            $this->data['auth_message'] = 'Вы ввели неверный код активации. Пожалуйста, проверьте свою электронную почту еще раз.';
+            $this->load->view('templates/header', $this->data);
+            $this->load->view($this->dx_auth->activate_failed_view, $this->data);
+            $this->load->view('templates/footer', $this->data);
         }
     }
 

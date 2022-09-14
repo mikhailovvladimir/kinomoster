@@ -25,7 +25,7 @@
 
 <?php foreach ($comments as $comment) : ?>
 <div class="panel panel-info">
-    <div class="panel-heading"><i class="glyphicon glyphicon-user"></i> <span><?php  echo getUserNameById($comment['user_id'])->username; ?></span> </div>
+    <div class="panel-heading"><i class="glyphicon glyphicon-user"></i> <span><?php  echo get_user_name_by_id($comment['user_id'])->username; ?></span> </div>
     <div class="panel-body">
         <?php echo $comment['comment_text']; ?>
     </div>

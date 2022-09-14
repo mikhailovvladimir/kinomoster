@@ -1,76 +1,76 @@
 <?php
 
 /*
-	It is recommended for you to change 'auth_login_incorrect_password' and 'auth_login_username_not_exist' into something vague.
-	For example: Username and password do not match.
+Вам рекомендуется изменить «auth_login_incorrect_password» и «auth_login_username_not_exist» на что-то расплывчатое.
+Например: Имя пользователя и пароль не совпадают.
 */
 
-$lang['auth_login_incorrect_password'] = "Некорректный логин или пароль";
-$lang['auth_login_username_not_exist'] = "Некорректный логин или пароль";
+$lang['auth_login_incorrect_password'] = "Неправильный логин или пароль";
+$lang['auth_login_username_not_exist'] = "Неправильный логин или пароль";
 
-$lang['auth_username_or_email_not_exist'] = "Username or email address not exist.";
-$lang['auth_not_activated'] = "Ваш аккаунт не активирован. Пожалуйста проверьте свой email";
-$lang['auth_request_sent'] = "Your request to change password is already sent. Please check your email.";
-$lang['auth_incorrect_old_password'] = "Your old password is incorrect.";
-$lang['auth_incorrect_password'] = "Your password is incorrect.";
+$lang['auth_username_or_email_not_exist'] = "Имя пользователя или адрес электронной почты не существует.";
+$lang['auth_not_activated'] = "Ваш аккаунт не активирован. Пожалуйста, проверьте свою электронную почту";
+$lang['auth_request_sent'] = "Ваш запрос на смену пароля уже отправлен. Пожалуйста, проверьте почту.";
+$lang['auth_incorrect_old_password'] = "Ваш старый пароль неверен.";
+$lang['auth_incorrect_password'] = "Ваш пароль неверен.";
 
-// Email subject
-$lang['auth_account_subject'] = "%s account details";
-$lang['auth_activate_subject'] = "%s activation";
-$lang['auth_forgot_password_subject'] = "New password request";
+// Тема письма
+$lang['auth_account_subject'] = "данные учетной записи %s";
+$lang['auth_activate_subject'] = "Активация %s";
+$lang['auth_forgot_password_subject'] = "Запрос нового пароля";
 
-// Email content
-$lang['auth_account_content'] = "Welcome to %s,
+// Содержимое электронной почты
+$lang['auth_account_content'] = "Добро пожаловать в %s,
 
-Thank you for registering. Your account was successfully created.
+Спасибо за регистрацию. Ваш аккаунт был успешно создан.
 
-You can login with either your username or email address:
+Вы можете войти под своим именем пользователя или адресом электронной почты:
 
-Login: %s
-Email: %s
-Password: %s
+Логин: %s
+Электронная почта: %s
+Пароль: %s
 
-You can try logging in now by going to %s
+Вы можете попробовать войти сейчас, перейдя на %s
 
-We hope that you enjoy your stay with us.
+Мы надеемся, что вам понравится ваше пребывание у нас.
 
-Regards,
-The %s Team";
+С уважением,
+Команда %s";
 
-$lang['auth_activate_content'] = "Welcome to %s,
+$lang['auth_activate_content'] = "Добро пожаловать в %s,
 
-To activate your account, you must follow the activation link below:
+Чтобы активировать свою учетную запись, вы должны перейти по ссылке активации ниже:
 %s
 
-Please activate your account within %s hours, otherwise your registration will become invalid and you will have to register again.
+Пожалуйста, активируйте свою учетную запись в течение %s часов, в противном случае ваша регистрация станет недействительной, и вам придется регистрироваться заново.
 
-You can use either you username or email address to login.
-Your login details are as follows:
+Для входа вы можете использовать либо свое имя пользователя, либо адрес электронной почты.
+Ваши данные для входа следующие:
 
-Login: %s
-Email: %s
-Password: %s
+Логин: %s
+Электронная почта: %s
+Пароль: %s
 
-We hope that you enjoy your stay with us :)
+Мы надеемся, что вам понравится ваше пребывание у нас :)
 
-Regards,
-The %s Team";
+С уважением,
+Команда %s";
 
 $lang['auth_forgot_password_content'] = "%s,
 
-You have requested your password to be changed, because you forgot the password.
-Please follow this link in order to complete change password process:
+Вы запросили изменение пароля, так как забыли пароль.
+Пожалуйста, перейдите по этой ссылке, чтобы завершить процесс смены пароля:
 %s
 
-Your New Password: %s
-Key for Activation: %s
+Ваш новый пароль: %s
+Ключ для активации: %s
 
-After you successfully complete the process, you can change this new password into password that you want.
+После того, как вы успешно завершите процесс, вы можете изменить этот новый пароль на пароль, который вы хотите.
 
-If you have any more problems with gaining access to your account please contact %s.
+Если у вас возникнут дополнительные проблемы с доступом к вашей учетной записи, свяжитесь с %s.
 
-Regards,
-The %s Team";
+С уважением,
+Команда %s";
 
-/* End of file dx_auth_lang.php */
-/* Location: ./application/language/english/dx_auth_lang.php */
+/* Конец файла dx_auth_lang.php */
+/* Расположение: ./application/language/english/dx_auth_lang.php */

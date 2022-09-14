@@ -7,7 +7,7 @@ class Comments_model extends CI_Model
         $this->load->database();
     }
 
-    public function getComments($movie_id, $limit)
+    public function get_comments($movie_id, $limit)
     {
         $query = $this->db
             ->where('movie_id', $movie_id)
@@ -17,14 +17,14 @@ class Comments_model extends CI_Model
         return $query->result_array();
     }
 
-    public function addComment($movieId)
+    public function add_comments($movie_id)
     {
-        $commentColumns = [
+        $comment_columns = [
             'user_id' => $this->dx_auth->get_user_id(),
-            'movie_id' => $movieId,
+            'movie_id' => $movie_id,
             'comment_text' => $this->input->post('comment-text')
         ];
 
-        return $this->db->insert('comments', $commentColumns);
+        return $this->db->insert('comments', $comment_columns);
     }
 }
