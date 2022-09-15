@@ -17,8 +17,8 @@ class Rating extends MY_Controller
             show_404();
         }
 
-        $url = '/rating';
-        $pagination_config = get_pagination_config($count_movies, $count_films_on_page, $url);
+        $url_pagination = '/rating';
+        $pagination_config = get_pagination_config($count_movies, $count_films_on_page, $url_pagination);
 
         //init pagination
         $this->pagination->initialize($pagination_config);

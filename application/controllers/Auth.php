@@ -111,10 +111,10 @@ class Auth extends MY_Controller
             $val = $this->form_validation;
 
             // Set form validation rules
-            $val->set_rules('username', 'Логин', 'trim|required|min_length[' . $this->min_username . ']|max_length[' . $this->max_username . ']|callback_username_check|alpha_dash');
-            $val->set_rules('password', 'Пароль', 'trim|required|min_length[' . $this->min_password . ']|max_length[' . $this->max_password . ']|matches[confirm_password]');
+            $val->set_rules('username', 'Логин', 'trim|required|htmlspecialchars|is_string|min_length[' . $this->min_username . ']|max_length[' . $this->max_username . ']|callback_username_check|alpha_dash');
+            $val->set_rules('password', 'Пароль', 'trim|required|htmlspecialchars|is_string|min_length[' . $this->min_password . ']|max_length[' . $this->max_password . ']|matches[confirm_password]');
             $val->set_rules('confirm_password', 'Повторите пароль', 'trim|required');
-            $val->set_rules('email', 'Ваш Email', 'trim|required|valid_email|callback_email_check');
+            $val->set_rules('email', 'Ваш Email', 'trim|required|htmlspecialchars|valid_email|callback_email_check');
 
             // Is registration using captcha
             if ($this->dx_auth->captcha_registration) {
